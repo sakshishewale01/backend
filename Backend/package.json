@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend learning",
+  "keywords": [
+    "proxy"
+  ],
+  "homepage": "https://github.com/sakshishewale01/backend#readme",
+  "bugs": {
+    "url": "https://github.com/sakshishewale01/backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakshishewale01/backend.git"
+  },
+  "license": "ISC",
+  "author": "Sakshi Shewale",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
