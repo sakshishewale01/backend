@@ -53,4 +53,4 @@ const doctorSchema = new mongoose.Schema(
      
         );
 
-export const doctor = mongoose.model('Doctor',doctorSchema);
+export const doctor = mongoose.model('Doctor',doctorSchema); 
