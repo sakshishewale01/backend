@@ -182,3 +182,98 @@ node_modules
 ```
 
 **Never push your MongoDB username or password to GitHub.**
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+# PART 2 -Custome API response and error handling
+
+API Utilities
+
+This folder contains reusable utility classes and functions used to make the backend API clean, consistent, and easier to manage.
+
+# 1. ApiError
+
+ApiError is a custom error class used to create API errors with an HTTP status code.
+
+Example
+throw new ApiError(404, "User not found");
+It stores:
+statusCode → HTTP error status code
+message → Error message
+success → false
+errors → Additional error details
+Purpose
+
+ApiError provides a standard structure for handling errors throughout the backend.
+
+# 2. ApiResponse
+
+ApiResponse is used to create a consistent structure for successful API responses.
+
+Example
+res.status(200).json(
+    new ApiResponse(200, user, "User fetched successfully")
+);
+It stores:
+statusCode → HTTP status code
+data → Response data
+message → Success message
+success → true for status codes below 400
+Purpose
+
+ApiResponse ensures that successful responses follow the same format throughout the application.
+
+# 3. asyncHandler
+
+asyncHandler is a utility function used to handle errors from asynchronous Express controllers.
+
+Example
+const getUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            user,
+            "User fetched successfully"
+        )
+    );
+});
+
+If an error occurs inside the controller, asyncHandler passes the error to Express's error-handling middleware.
+
+Error Flow
+Controller
+    ↓
+asyncHandler
+    ↓
+Async Operation
+    ↓
+Error
+    ↓
+next(error)
+    ↓
+Error Middleware
+
+This avoids writing repetitive try-catch blocks in every asynchronous controller.
+
+# In Short
+
+ApiError
+    ↓
+Handles API errors
+
+ApiResponse
+    ↓
+Formats successful API responses
+
+asyncHandler
+    ↓
+Handles errors from async controllers
+
+# These utilities help create a clean, reusable, and consistent backend API structure.
+
+
+
+
+
