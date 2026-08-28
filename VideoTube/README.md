@@ -64,7 +64,7 @@ MONGODB_URI=mongodb+srv://sakshi:your_password@cluster0.xxxxx.mongodb.net/videot
 ```
 
 > If your MongoDB password contains special characters such as `@`, `#`, `%`, etc., URL-encode them.
-> Try to create simple password, avoid to add specila character.
+> Try to create simple password, avoid to add any special character.
 
 ---
 
