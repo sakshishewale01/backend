@@ -181,10 +181,10 @@ Add this to `.gitignore`:
 node_modules
 ```
 
-**Never push your MongoDB username or password to GitHub.**
-
+**Never push your MongoDB username or password to GitHub.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
+
 # PART 2 -Custome API response and error handling
 
 API Utilities
