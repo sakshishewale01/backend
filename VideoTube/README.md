@@ -713,7 +713,66 @@ Client ---------------> Server
 
 HTTP is fundamental to websites, REST APIs, web applications, mobile applications, and many other networked systems.
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 
+# Postman
+ 
+ 
+# 📌 Introduction
+
+Postman is an API development and testing tool used to send HTTP requests to a server and check its responses.
+
+It is useful for testing APIs before connecting them to a frontend application.
+
+🔹 HTTP Methods in Postman
+
+Postman supports common HTTP methods:
+
+GET — Retrieve data
+POST — Create/send data
+PUT — Update data
+PATCH — Partially update data
+DELETE — Delete data
+🔹 Example
+
+For a user registration API:
+
+POST http://localhost:8000/api/v1/users/register
+
+Request body:
+
+{
+    "username": "sakshi",
+    "email": "sakshi@example.com",
+    "password": "123456"
+}
+
+The server might respond:
+
+{
+    "message": "User registered successfully"
+}
+
+
+# 🔹 Why Use Postman?
+Test APIs easily
+Send different types of HTTP requests
+Test request body, headers, and authentication
+View server responses and status codes
+Debug backend APIs
+
+🚀 Basic Flow
+Postman
+   ↓
+HTTP Request
+   ↓
+Backend Server
+   ↓
+HTTP Response
+   ↓
+Postman
+
+# Postman makes it easy to develop, test, and debug REST APIs.
 
 
 
