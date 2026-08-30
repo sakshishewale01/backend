@@ -38,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
     console.log(req.files);
 
 
-    const { fullName, email, username, password } = req.body
+    const { fullName, email, username, password } = req.body || {};
     console.log("username: ", username);
 
     if ([fullName, email, username, password].some((field) => !field?.trim())) {
@@ -100,6 +100,13 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 const loginUser = asyncHandler(async (req, res) => {
+    //req body -> data
+    //username or email
+    //find the user
+    //password check
+    //acces and fresh token
+    //send cookies
+    //send message that "Succesfully logined"
 
     const { username, email, password } = req.body
 
@@ -158,6 +165,38 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 
-export { registerUser, loginUser };
+const logoutUser = asyncHandler(async (req, res) => {
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $unset: {
+                refreshToken: 1
+            }
+        },
+        {
+            new: true
+        }
+    );
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    };
+
+    return res
+        .status(200)
+        .clearCookie("accessToken", options)
+        .clearCookie("refreshToken", options)
+        .json(
+            new ApiResponse(
+                200,
+                {},
+                "User logged out successfully"
+            )
+        );
+});
+
+
+export { registerUser, loginUser,logoutUser };
     
 
